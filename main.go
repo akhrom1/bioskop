@@ -1,8 +1,9 @@
 package main
 
 import (
-	"bioskop-app/controllers"
 	"bioskop-app/database"
+	"bioskop-app/middlewares"
+	"bioskop-app/routes"
 
 	"github.com/gin-gonic/gin"
 )
@@ -11,12 +12,10 @@ func main() {
 	database.Connect()
 
 	r := gin.Default()
+	r.Use(middlewares.CheckDB())
 
 	// Route Api Endpoints
-	r.POST("/bioskop", controllers.CreateBioskop)
-	r.GET("/bioskop", controllers.GetBioskop)
-
-	
+	routes.BioskopRoutes(r)
 
 	r.Run(":8080")
 }
