@@ -1,0 +1,12 @@
+-- +migrate Up
+CREATE TABLE bioskop (
+    id SERIAL PRIMARY KEY,
+    nama VARCHAR(100) NOT NULL,
+    lokasi VARCHAR(100) NOT NULL,
+    rating FLOAT DEFAULT 0,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- +migrate Down
+DROP TABLE IF EXISTS bioskop;

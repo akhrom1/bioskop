@@ -10,6 +10,7 @@ import (
 
 func main() {
 	database.Connect()
+	database.RunMigration(database.DB)
 
 	r := gin.Default()
 	r.Use(middlewares.CheckDB())
